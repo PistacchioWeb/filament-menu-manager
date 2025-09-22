@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PistacchioWeb\FilamentMenuManager\Concerns;
 
 use Filament\Actions\Action;
-use Filament\Support\Enums\ActionSize;
+use Filament\Support\Enums\Size as ActionSize;
 use PistacchioWeb\FilamentMenuManager\FilamentMenuManagerPlugin;
 use PistacchioWeb\FilamentMenuManager\Services\MenuItemService;
 

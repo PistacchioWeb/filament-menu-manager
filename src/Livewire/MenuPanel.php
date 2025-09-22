@@ -7,9 +7,9 @@ namespace PistacchioWeb\FilamentMenuManager\Livewire;
 use Filament\Forms\Components;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
-use Illuminate\Contracts\View\View;
+use Filament\Schemas\Components\Form;
+use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use PistacchioWeb\FilamentMenuManager\Contracts\MenuPanel as ContractsMenuPanel;
@@ -106,7 +106,7 @@ class MenuPanel extends Component implements HasForms
 
         return $form
             ->schema([
-                Components\View::make('filament-tables::components.empty-state.index')
+                \Filament\Schemas\Components\View::make('filament-tables::components.empty-state.index')
                     ->viewData([
                         'heading' => __('filament-menu-manager::menu-builder.panel.empty.heading'),
                         'description' => __('filament-menu-manager::menu-builder.panel.empty.description'),
