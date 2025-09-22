@@ -1,0 +1,23 @@
+{
+    "name": "pistacchioweb/filament-menu-manager",
+    "description": "A package to create and manage application menus through Filament",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PistacchioWeb\\FilamentMenuManager\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tommaso Mannori",
+            "email": "tommasomannori.pw@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^4.0",
+        "spatie/laravel-package-tools": "^1.92"
+    }
+}
