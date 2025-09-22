@@ -7,7 +7,6 @@ namespace PistacchioWeb\FilamentMenuManager\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use PistacchioWeb\FilamentMenuManager\FilamentMenuManagerPlugin;
-use PistacchioWeb\FilamentMenuManager\FilamentMenuManagerPlugin;
 
 /**
  * @property int $id
