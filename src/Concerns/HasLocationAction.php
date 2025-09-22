@@ -7,7 +7,9 @@ namespace PistacchioWeb\FilamentMenuManager\Concerns;
 use Filament\Actions\Action;
 use Filament\Forms\Components;
 use Filament\Notifications\Notification;
-use Filament\Support\Enums\MaxWidth;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\View;
+use Filament\Support\Enums\Width;
 use Illuminate\Support\Collection;
 use PistacchioWeb\FilamentMenuManager\FilamentMenuManagerPlugin;
 
@@ -27,7 +29,7 @@ trait HasLocationAction
             ->modalHeading(__('filament-menu-manager::menu-builder.actions.locations.heading'))
             ->modalDescription(__('filament-menu-manager::menu-builder.actions.locations.description'))
             ->modalSubmitActionLabel(__('filament-menu-manager::menu-builder.actions.locations.submit'))
-            ->modalWidth(MaxWidth::Large)
+            ->modalWidth(Width::Large)
             ->modalSubmitAction($this->getRegisteredLocations()->isEmpty() ? false : null)
             ->color('gray')
             ->fillForm(fn () => $this->getRegisteredLocations()->map(fn ($location, $key) => [
@@ -62,8 +64,8 @@ trait HasLocationAction
                     ->success()
                     ->send();
             })
-            ->form($this->getRegisteredLocations()->map(
-                fn ($location, $key) => Components\Grid::make(2)
+            ->schema($this->getRegisteredLocations()->map(
+                fn ($location, $key) => Grid::make(2)
                     ->statePath($key)
                     ->schema([
                         Components\TextInput::make('location')
@@ -78,7 +80,7 @@ trait HasLocationAction
                             ->options($this->getMenus()->pluck('name', 'id')->all()),
                     ]),
             )->all() ?: [
-                Components\View::make('filament-tables::components.empty-state.index')
+                View::make('filament-tables::components.empty-state.index')
                     ->viewData([
                         'heading' => __('filament-menu-manager::menu-builder.actions.locations.empty.heading'),
                         'icon' => 'heroicon-o-x-mark',
