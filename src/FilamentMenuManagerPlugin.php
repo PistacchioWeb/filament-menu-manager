@@ -3,15 +3,15 @@
 namespace PistacchioWeb\FilamentMenuManager;
 
 use Closure;
-use PistacchioWeb\FilamentMenuManager\Contracts\MenuPanel;
-use PistacchioWeb\FilamentMenuManager\Models\Menu;
-use PistacchioWeb\FilamentMenuManager\Models\MenuItem;
-use PistacchioWeb\FilamentMenuManager\Models\MenuLocation;
-use PistacchioWeb\FilamentMenuManager\Resources\MenuResource;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Illuminate\Database\Eloquent\Model;
+use PistacchioWeb\FilamentMenuManager\Contracts\MenuPanel;
+use PistacchioWeb\FilamentMenuManager\Models\Menu;
+use PistacchioWeb\FilamentMenuManager\Models\MenuItem;
+use PistacchioWeb\FilamentMenuManager\Models\MenuLocation;
+use PistacchioWeb\FilamentMenuManager\Resources\Menus\MenuResource;
 
 class FilamentMenuManagerPlugin implements Plugin
 {
@@ -27,17 +27,17 @@ class FilamentMenuManagerPlugin implements Plugin
 
     protected array $locations = [];
 
-    protected array | Closure $menuFields = [];
+    protected array|Closure $menuFields = [];
 
-    protected array | Closure $menuItemFields = [];
+    protected array|Closure $menuItemFields = [];
 
-    protected string | Closure | null $navigationLabel = null;
+    protected string|Closure|null $navigationLabel = null;
 
-    protected string | Closure | null $navigationGroup = null;
+    protected string|Closure|null $navigationGroup = null;
 
-    protected string | Closure | null $navigationIcon = 'heroicon-o-bars-3';
+    protected string|Closure|null $navigationIcon = 'heroicon-o-bars-3';
 
-    protected int | Closure | null $navigationSort = null;
+    protected int|Closure|null $navigationSort = null;
 
     protected bool $navigationCountBadge = false;
 
@@ -54,14 +54,12 @@ class FilamentMenuManagerPlugin implements Plugin
 
     public function getId(): string
     {
-        // return 'cr-filament-menu-manager';
-        return config('filament-menu-manager.plugin.id');
+        return 'cr-filament-menu-manager';
+        // return config('filament-menu-manager.plugin.id');
     }
 
     /**
      * Runs Before Plugin has fully initialized
-     * @param Panel $panel
-     * @return void
      */
     public function register(Panel $panel): void
     {
@@ -73,11 +71,10 @@ class FilamentMenuManagerPlugin implements Plugin
         // TODO: Implement boot() method.
     }
 
-    public static function make() : self
+    public static function make(): self
     {
-        return new self();
+        return new self;
     }
-
 
     public static function get(): static
     {
@@ -168,42 +165,42 @@ class FilamentMenuManagerPlugin implements Plugin
         return $this;
     }
 
-    public function addMenuFields(array | Closure $schema): static
+    public function addMenuFields(array|Closure $schema): static
     {
         $this->menuFields = $schema;
 
         return $this;
     }
 
-    public function addMenuItemFields(array | Closure $schema): static
+    public function addMenuItemFields(array|Closure $schema): static
     {
         $this->menuItemFields = $schema;
 
         return $this;
     }
 
-    public function navigationLabel(string | Closure | null $label = null): static
+    public function navigationLabel(string|Closure|null $label = null): static
     {
         $this->navigationLabel = $label;
 
         return $this;
     }
 
-    public function navigationGroup(string | Closure | null $group = null): static
+    public function navigationGroup(string|Closure|null $group = null): static
     {
         $this->navigationGroup = $group;
 
         return $this;
     }
 
-    public function navigationIcon(string | Closure $icon): static
+    public function navigationIcon(string|Closure $icon): static
     {
         $this->navigationIcon = $icon;
 
         return $this;
     }
 
-    public function navigationSort(int | Closure $order): static
+    public function navigationSort(int|Closure $order): static
     {
         $this->navigationSort = $order;
 
@@ -282,12 +279,12 @@ class FilamentMenuManagerPlugin implements Plugin
         return $this->locations;
     }
 
-    public function getMenuFields(): array | Closure
+    public function getMenuFields(): array|Closure
     {
         return $this->menuFields;
     }
 
-    public function getMenuItemFields(): array | Closure
+    public function getMenuItemFields(): array|Closure
     {
         return $this->menuItemFields;
     }
@@ -316,5 +313,4 @@ class FilamentMenuManagerPlugin implements Plugin
     {
         return $this->navigationCountBadge;
     }
-
 }

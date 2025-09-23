@@ -14,7 +14,7 @@ class EditMenu extends EditRecord
 {
     use HasLocationAction;
 
-    protected static string $view = 'filament-menu-manager::edit-record';
+    protected string $view = 'filament-menu-manager::edit-record';
 
     public static function getResource(): string
     {

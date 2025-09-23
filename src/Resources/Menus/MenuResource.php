@@ -9,8 +9,8 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use PistacchioWeb\FilamentMenuManager\FilamentMenuManagerPlugin;
-use PistacchioWeb\FilamentMenuManager\Resources\MenuResource\Pages\ListMenus;
 use PistacchioWeb\FilamentMenuManager\Resources\Menus\Pages\EditMenu;
+use PistacchioWeb\FilamentMenuManager\Resources\Menus\Pages\ListMenus;
 use PistacchioWeb\FilamentMenuManager\Resources\Menus\Schemas\MenuForm;
 use PistacchioWeb\FilamentMenuManager\Resources\Menus\Tables\MenuTable;
 
