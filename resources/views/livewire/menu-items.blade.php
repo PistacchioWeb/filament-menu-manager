@@ -8,7 +8,7 @@
             @endforeach
         </ul>
     @else
-        <x-filament-tables::empty-state icon="heroicon-o-document" :heading="trans('filament-menu-manager::menu-builder.items.empty.heading')" />
+        {{-- <x-filament-tables::empty-state icon="heroicon-o-document" :heading="trans('filament-menu-manager::menu-builder.items.empty.heading')" /> --}}
     @endif
 
     <x-filament-actions::modals />

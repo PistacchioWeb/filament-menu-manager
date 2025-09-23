@@ -7,9 +7,9 @@ namespace PistacchioWeb\FilamentMenuManager\Livewire;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
+// use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
-use Filament\Schemas\Components\Form;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -54,9 +54,9 @@ class CreateCustomLink extends Component implements HasForms
         $this->dispatch('menu:created');
     }
 
-    public function form(Form $form): Form
+    public function form(\Filament\Schemas\Schema $schema): \Filament\Schemas\Schema
     {
-        return $form
+        return $schema
             ->schema([
                 TextInput::make('title')
                     ->label(__('filament-menu-manager::menu-builder.form.title'))
