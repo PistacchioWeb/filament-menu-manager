@@ -4,20 +4,16 @@ namespace PistacchioWeb\FilamentMenuManager\Resources\Menus\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\ToggleButtons;
+use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Group;
-use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Livewire\Component;
 use PistacchioWeb\FilamentMenuManager\FilamentMenuManagerPlugin;
 
 class MenuForm
 {
     public static function configure(Schema $schema): Schema
     {
-        // return $schema->components([
-        //     Section::make()->schema($form->getComponents())
-        // ]);
         return $schema
             ->components([
                 Grid::make(4)

@@ -25,10 +25,10 @@ trait HasLocationAction
     public function getLocationAction(): Action
     {
         return Action::make('locations')
-            ->label(__('filament-menu-manager::menu-builder.actions.locations.label'))
-            ->modalHeading(__('filament-menu-manager::menu-builder.actions.locations.heading'))
-            ->modalDescription(__('filament-menu-manager::menu-builder.actions.locations.description'))
-            ->modalSubmitActionLabel(__('filament-menu-manager::menu-builder.actions.locations.submit'))
+            ->label(__('filament-menu-manager::menu-manager.actions.locations.label'))
+            ->modalHeading(__('filament-menu-manager::menu-manager.actions.locations.heading'))
+            ->modalDescription(__('filament-menu-manager::menu-manager.actions.locations.description'))
+            ->modalSubmitActionLabel(__('filament-menu-manager::menu-manager.actions.locations.submit'))
             ->modalWidth(Width::Large)
             ->modalSubmitAction($this->getRegisteredLocations()->isEmpty() ? false : null)
             ->color('gray')
@@ -60,7 +60,7 @@ trait HasLocationAction
                 }
 
                 Notification::make()
-                    ->title(__('filament-menu-manager::menu-builder.notifications.locations.title'))
+                    ->title(__('filament-menu-manager::menu-manager.notifications.locations.title'))
                     ->success()
                     ->send();
             })
@@ -69,22 +69,23 @@ trait HasLocationAction
                     ->statePath($key)
                     ->schema([
                         Components\TextInput::make('location')
-                            ->label(__('filament-menu-manager::menu-builder.actions.locations.form.location.label'))
+                            ->label(__('filament-menu-manager::menu-manager.actions.locations.form.location.label'))
                             ->hiddenLabel($key !== $this->getRegisteredLocations()->keys()->first())
                             ->disabled(),
 
                         Components\Select::make('menu')
-                            ->label(__('filament-menu-manager::menu-builder.actions.locations.form.menu.label'))
+                            ->label(__('filament-menu-manager::menu-manager.actions.locations.form.menu.label'))
                             ->searchable()
                             ->hiddenLabel($key !== $this->getRegisteredLocations()->keys()->first())
                             ->options($this->getMenus()->pluck('name', 'id')->all()),
                     ]),
             )->all() ?: [
-                View::make('filament-tables::components.empty-state.index')
-                    ->viewData([
-                        'heading' => __('filament-menu-manager::menu-builder.actions.locations.empty.heading'),
-                        'icon' => 'heroicon-o-x-mark',
-                    ]),
+                // Todo: add V4 version or recreate custom
+                // View::make('filament-tables::components.empty-state.index')
+                //     ->viewData([
+                //         'heading' => __('filament-menu-manager::menu-manager.actions.locations.empty.heading'),
+                //         'icon' => 'heroicon-o-x-mark',
+                //     ]),
             ]);
     }
 

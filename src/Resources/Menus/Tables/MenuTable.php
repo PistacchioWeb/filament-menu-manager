@@ -23,23 +23,23 @@ class MenuTable
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()
-                    ->label(__('filament-menu-manager::menu-builder.resource.name.label')),
+                    ->label(__('filament-menu-manager::menu-manager.resource.name.label')),
                 TextColumn::make('locations.location')
-                    ->label(__('filament-menu-manager::menu-builder.resource.locations.label'))
-                    ->default(__('filament-menu-manager::menu-builder.resource.locations.empty'))
+                    ->label(__('filament-menu-manager::menu-manager.resource.locations.label'))
+                    ->default(__('filament-menu-manager::menu-manager.resource.locations.empty'))
                     ->color(fn (string $state) => array_key_exists($state, $locations) ? 'primary' : 'gray')
                     ->formatStateUsing(fn (string $state) => $locations[$state] ?? $state)
                     ->limitList(2)
                     ->sortable()
                     ->badge(),
                 TextColumn::make('menu_items_count')
-                    ->label(__('filament-menu-manager::menu-builder.resource.items.label'))
+                    ->label(__('filament-menu-manager::menu-manager.resource.items.label'))
                     ->icon('heroicon-o-link')
                     ->numeric()
                     ->default(0)
                     ->sortable(),
                 IconColumn::make('is_visible')
-                    ->label(__('filament-menu-manager::menu-builder.resource.is_visible.label'))
+                    ->label(__('filament-menu-manager::menu-manager.resource.is_visible.label'))
                     ->sortable()
                     ->boolean(),
             ])
