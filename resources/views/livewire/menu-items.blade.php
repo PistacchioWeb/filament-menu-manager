@@ -1,7 +1,7 @@
 <div>
     @if ($this->menuItems->isNotEmpty())
-        <ul ax-load
-            ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-menu-manager', 'pistacchioweb/filament-menu-manager') }}"
+        <ul x-load
+            x-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-menu-manager', 'pistacchioweb/filament-menu-manager') }}"
             x-data="MenuBuilder({ parentId: 0 })" class="space-y-2">
             @foreach ($this->menuItems as $menuItem)
                 <x-filament-menu-manager::menu-item :item="$menuItem" />

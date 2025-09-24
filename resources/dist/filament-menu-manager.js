@@ -1,4 +1,4 @@
-function MenuBuilder({ parentId }) {
+export default function MenuBuilder({ parentId }) {
   return {
     parentId,
     sortable: null,

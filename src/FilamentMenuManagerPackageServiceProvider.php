@@ -52,8 +52,8 @@ class FilamentMenuManagerPackageServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         FilamentAsset::register(
-            $this->getAssets(),
-            $this->getAssetPackageName(),
+            assets: $this->getAssets(),
+            package: $this->getAssetPackageName(),
         );
 
         Livewire::component('menu-builder-items', MenuItems::class);
