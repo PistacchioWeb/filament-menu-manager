@@ -7,14 +7,14 @@
             <div class="flex items-center justify-between mt-4">
                 @if ($this->hasPreviousPage())
                     <x-filament::link tag="button" wire:click="previousPage" icon="heroicon-m-chevron-left">
-                        {{ __('filament-menu-manager::menu-builder.panel.pagination.previous') }}
+                        {{ __('filament-menu-manager::menu-manager.panel.pagination.previous') }}
                     </x-filament::link>
                 @endif
 
                 @if ($this->hasNextPage())
                     <x-filament::link class="ml-auto" tag="button" wire:click="nextPage" icon="heroicon-m-chevron-right"
                         iconPosition="after">
-                        {{ __('filament-menu-manager::menu-builder.panel.pagination.next') }}
+                        {{ __('filament-menu-manager::menu-manager.panel.pagination.next') }}
                     </x-filament::link>
                 @endif
             </div>
@@ -23,7 +23,7 @@
         @if ($this->items)
             <x-slot:footerActions>
                 <x-filament::button type="submit">
-                    {{ __('filament-menu-manager::menu-builder.actions.add.label') }}
+                    {{ __('filament-menu-manager::menu-manager.actions.add.label') }}
                 </x-filament::button>
             </x-slot:footerActions>
         @endif

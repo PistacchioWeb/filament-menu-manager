@@ -36,7 +36,7 @@ trait ManagesMenuItemHierarchy
     public function indentAction(): Action
     {
         return Action::make('indent')
-            ->label(__('filament-menu-manager::menu-builder.actions.indent'))
+            ->label(__('filament-menu-manager::menu-manager.actions.indent'))
             ->icon('heroicon-o-arrow-right')
             ->color('gray')
             ->iconButton()
@@ -48,7 +48,7 @@ trait ManagesMenuItemHierarchy
     public function unindentAction(): Action
     {
         return Action::make('unindent')
-            ->label(__('filament-menu-manager::menu-builder.actions.unindent'))
+            ->label(__('filament-menu-manager::menu-manager.actions.unindent'))
             ->icon('heroicon-o-arrow-left')
             ->color('gray')
             ->iconButton()

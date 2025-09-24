@@ -133,7 +133,7 @@ class MenuItems extends Component implements HasActions, HasForms
     public function indentAction(): Action
     {
         return Action::make('indent')
-            ->label(__('filament-menu-manager::menu-builder.actions.indent'))
+            ->label(__('filament-menu-manager::menu-manager.actions.indent'))
             ->icon('heroicon-o-arrow-right')
             ->color('gray')
             ->iconButton()
@@ -148,7 +148,7 @@ class MenuItems extends Component implements HasActions, HasForms
     public function unindentAction(): Action
     {
         return Action::make('unindent')
-            ->label(__('filament-menu-manager::menu-builder.actions.unindent'))
+            ->label(__('filament-menu-manager::menu-manager.actions.unindent'))
             ->icon('heroicon-o-arrow-left')
             ->color('gray')
             ->iconButton()
@@ -227,22 +227,22 @@ class MenuItems extends Component implements HasActions, HasForms
     {
         return [
             TextInput::make('title')
-                ->label(__('filament-menu-manager::menu-builder.form.title'))
+                ->label(__('filament-menu-manager::menu-manager.form.title'))
                 ->required(),
             TextInput::make('url')
                 ->hidden(fn (?string $state, Get $get): bool => blank($state) || filled($get('linkable_type')))
-                ->label(__('filament-menu-manager::menu-builder.form.url'))
+                ->label(__('filament-menu-manager::menu-manager.form.url'))
                 ->required(),
             TextEntry::make('linkable_type')
-                ->label(__('filament-menu-manager::menu-builder.form.linkable_type'))
+                ->label(__('filament-menu-manager::menu-manager.form.linkable_type'))
                 ->hidden(fn (?string $state): bool => blank($state))
                 ->state(fn (string $state) => $state),
             TextEntry::make('linkable_id')
-                ->label(__('filament-menu-manager::menu-builder.form.linkable_id'))
+                ->label(__('filament-menu-manager::menu-manager.form.linkable_id'))
                 ->hidden(fn (?string $state): bool => blank($state))
                 ->state(fn (string $state) => $state),
             Select::make('target')
-                ->label(__('filament-menu-manager::menu-builder.open_in.label'))
+                ->label(__('filament-menu-manager::menu-manager.open_in.label'))
                 ->options(LinkTarget::class)
                 ->default(LinkTarget::Self),
             Group::make()

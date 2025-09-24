@@ -8,7 +8,6 @@ use Filament\Forms\Components;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
-use Filament\Schemas\Components\Form;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -95,24 +94,24 @@ class MenuPanel extends Component implements HasForms
         $this->dispatch('menu:created');
 
         Notification::make()
-            ->title(__('filament-menu-manager::menu-builder.notifications.created.title'))
+            ->title(__('filament-menu-manager::menu-manager.notifications.created.title'))
             ->success()
             ->send();
     }
 
-    public function form(Form $form): Form
+    public function form(\Filament\Schemas\Schema $schema): \Filament\Schemas\Schema
     {
         $items = collect($this->getItems())->mapWithKeys(fn ($item) => [$item['linkable_id'] ?? $item['title'] => $item['title']]);
 
-        return $form
-            ->schema([
-                \Filament\Schemas\Components\View::make('filament-tables::components.empty-state.index')
-                    ->viewData([
-                        'heading' => __('filament-menu-manager::menu-builder.panel.empty.heading'),
-                        'description' => __('filament-menu-manager::menu-builder.panel.empty.description'),
-                        'icon' => 'heroicon-o-link-slash',
-                    ])
-                    ->visible($items->isEmpty()),
+        return $schema
+            ->components([
+                // \Filament\Schemas\Components\View::make('filament-tables::components.empty-state.index')
+                //     ->viewData([
+                //         'heading' => __('filament-menu-manager::menu-manager.panel.empty.heading'),
+                //         'description' => __('filament-menu-manager::menu-manager.panel.empty.description'),
+                //         'icon' => 'heroicon-o-link-slash',
+                //     ])
+                //     ->visible($items->isEmpty()),
 
                 Components\CheckboxList::make('data')
                     ->hiddenLabel()

@@ -1,10 +1,10 @@
 <form wire:submit="save">
-    <x-filament::section :heading="__('filament-menu-manager::menu-builder.custom_link')" :collapsible="true" :persist-collapsed="true" id="create-custom-link">
+    <x-filament::section :heading="__('filament-menu-manager::menu-manager.custom_link')" :collapsible="true" :persist-collapsed="true" id="create-custom-link">
         {{ $this->form }}
 
         <x-slot:footerActions>
             <x-filament::button type="submit">
-                {{ __('filament-menu-manager::menu-builder.actions.add.label') }}
+                {{ __('filament-menu-manager::menu-manager.actions.add.label') }}
             </x-filament::button>
         </x-slot:footerActions>
     </x-filament::section>

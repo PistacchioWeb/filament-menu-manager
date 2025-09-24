@@ -35,7 +35,7 @@ class CreateCustomText extends Component implements HasForms
             ]);
 
         Notification::make()
-            ->title(__('filament-menu-manager::menu-builder.notifications.created.title'))
+            ->title(__('filament-menu-manager::menu-manager.notifications.created.title'))
             ->success()
             ->send();
 
@@ -48,7 +48,7 @@ class CreateCustomText extends Component implements HasForms
         return $form
             ->schema([
                 TextInput::make('title')
-                    ->label(__('filament-menu-manager::menu-builder.form.title'))
+                    ->label(__('filament-menu-manager::menu-manager.form.title'))
                     ->required(),
             ]);
     }
