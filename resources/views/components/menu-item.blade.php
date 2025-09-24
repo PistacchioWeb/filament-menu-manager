@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <ul x-collapse x-show="open" wire:key="{{ $item->getKey() }}.children" x-data="menuBuilder({ parentId: {{ $item->getKey() }} })"
+    <ul x-collapse x-show="open" wire:key="{{ $item->getKey() }}.children" x-data="MenuBuilder({ parentId: {{ $item->getKey() }} })"
         class="mt-2 space-y-2 ms-4">
         @foreach ($item->children as $child)
             <x-filament-menu-manager::menu-item :item="$child" />
