@@ -194,8 +194,11 @@ class MenuItems extends Component implements HasActions, HasForms
             ->modalHeading(fn (array $arguments): string => __('filament-actions::edit.single.modal.heading', ['label' => $arguments['title']]))
             ->icon('heroicon-m-pencil-square')
             ->fillForm(fn (array $arguments): array => $this->getMenuItemService()->findByIdWithRelations($arguments['id'])->toArray())
-            ->form($this->getEditFormSchema())
-            ->action(fn (array $data, array $arguments) => $this->getMenuItemService()->update($arguments['id'], $data))
+            ->schema($this->getEditFormSchema())
+            ->action(function (array $data, array $arguments) {
+                // dd($this->getMenuItemService());
+                $this->getMenuItemService()->update($arguments['id'], $data);
+            })
             ->modalWidth(MaxWidth::Medium)
             ->slideOver();
     }
@@ -233,20 +236,26 @@ class MenuItems extends Component implements HasActions, HasForms
                 ->hidden(fn (?string $state, Get $get): bool => blank($state) || filled($get('linkable_type')))
                 ->label(__('filament-menu-manager::menu-manager.form.url'))
                 ->required(),
-            TextEntry::make('linkable_type')
+            TextInput::make('linkable_type')
                 ->label(__('filament-menu-manager::menu-manager.form.linkable_type'))
-                ->hidden(fn (?string $state): bool => blank($state))
-                ->state(fn (string $state) => $state),
-            TextEntry::make('linkable_id')
+                ->hidden(fn (?string $state): bool => blank($state))->disabled()->readOnly(),
+            TextInput::make('linkable_id')
                 ->label(__('filament-menu-manager::menu-manager.form.linkable_id'))
-                ->hidden(fn (?string $state): bool => blank($state))
-                ->state(fn (string $state) => $state),
+                ->hidden(fn (?string $state): bool => blank($state))->disabled()->readOnly(),
+            // TextEntry::make('linkable_type')
+            //     ->label(__('filament-menu-manager::menu-manager.form.linkable_type'))
+            //     ->hidden(fn (?string $state): bool => blank($state))
+            //     ->state(fn (string $state) => $state),
+            // TextEntry::make('linkable_id')
+            //     ->label(__('filament-menu-manager::menu-manager.form.linkable_id'))
+            //     ->hidden(fn (?string $state): bool => blank($state))
+            //     ->state(fn (string $state) => $state),
             Select::make('target')
                 ->label(__('filament-menu-manager::menu-manager.open_in.label'))
                 ->options(LinkTarget::class)
                 ->default(LinkTarget::Self),
             Group::make()
-                ->visible(fn (Component $component) => $component->evaluate(FilamentMenuManagerPlugin::get()->getMenuItemFields()) !== [])
+                ->visible(fn (\Filament\Schemas\Components\Group $component) => $component->evaluate(FilamentMenuManagerPlugin::get()->getMenuItemFields()) !== [])
                 ->schema(FilamentMenuManagerPlugin::get()->getMenuItemFields()),
         ];
     }
