@@ -11,7 +11,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Support\Enums\Size as ActionSize;
@@ -236,20 +235,14 @@ class MenuItems extends Component implements HasActions, HasForms
                 ->hidden(fn (?string $state, Get $get): bool => blank($state) || filled($get('linkable_type')))
                 ->label(__('filament-menu-manager::menu-manager.form.url'))
                 ->required(),
-            TextInput::make('linkable_type')
-                ->label(__('filament-menu-manager::menu-manager.form.linkable_type'))
-                ->hidden(fn (?string $state): bool => blank($state))->disabled()->readOnly(),
-            TextInput::make('linkable_id')
-                ->label(__('filament-menu-manager::menu-manager.form.linkable_id'))
-                ->hidden(fn (?string $state): bool => blank($state))->disabled()->readOnly(),
-            // TextEntry::make('linkable_type')
-            //     ->label(__('filament-menu-manager::menu-manager.form.linkable_type'))
-            //     ->hidden(fn (?string $state): bool => blank($state))
-            //     ->state(fn (string $state) => $state),
-            // TextEntry::make('linkable_id')
-            //     ->label(__('filament-menu-manager::menu-manager.form.linkable_id'))
-            //     ->hidden(fn (?string $state): bool => blank($state))
-            //     ->state(fn (string $state) => $state),
+            Group::make([
+                TextInput::make('linkable_type')
+                    ->label(__('filament-menu-manager::menu-manager.form.linkable_type'))
+                    ->hidden(fn (?string $state): bool => blank($state))->disabled()->readOnly(),
+                TextInput::make('linkable_id')
+                    ->label(__('filament-menu-manager::menu-manager.form.linkable_id'))
+                    ->hidden(fn (?string $state): bool => blank($state))->disabled()->readOnly(),
+            ])->columns(2),
             Select::make('target')
                 ->label(__('filament-menu-manager::menu-manager.open_in.label'))
                 ->options(LinkTarget::class)

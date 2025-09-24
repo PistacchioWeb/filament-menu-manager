@@ -15,11 +15,34 @@ This [Filament](https://filamentphp.com) package allows you to create and manage
 
 ## Installation
 
-You can install the package via composer:
+Add the repository to the package.json file
+
+```json
+{
+  "require": {
+    "vendor/filament-menu-manager": "*",
+    "repositories": [
+      {
+        "type": "vcs",
+        "url": "git@github.com:PistacchioWeb/filament-menu-manager.git"
+      }
+    ]
+  }
+}
+```
+
+Run composer installation
 
 ```bash
-composer require pistacchioweb/filament-menu-manager
+
+composer install
+
 ```
+
+<!-- You can install the package via composer:
+```bash
+composer require pistacchioweb/filament-menu-manager
+``` -->
 
 You need to publish the migrations and run them:
 
