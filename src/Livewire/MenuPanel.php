@@ -7,6 +7,7 @@ namespace PistacchioWeb\FilamentMenuManager\Livewire;
 use Filament\Forms\Components;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Notifications\Notification;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
@@ -105,13 +106,14 @@ class MenuPanel extends Component implements HasForms
 
         return $schema
             ->components([
-                // \Filament\Schemas\Components\View::make('filament-tables::components.empty-state.index')
-                //     ->viewData([
-                //         'heading' => __('filament-menu-manager::menu-manager.panel.empty.heading'),
-                //         'description' => __('filament-menu-manager::menu-manager.panel.empty.description'),
-                //         'icon' => 'heroicon-o-link-slash',
-                //     ])
-                //     ->visible($items->isEmpty()),
+                TextEntry::make('empty')
+                    ->view('filament-menu-manager::tables.empty-state.index')
+                    ->viewData(fn () => [
+                        'heading' => __('filament-menu-manager::menu-manager.panel.empty.heading'),
+                        'description' => __('filament-menu-manager::menu-manager.panel.empty.description'),
+                        'icon' => 'heroicon-o-link-slash',
+                    ])
+                    ->visible($items->isEmpty()),
 
                 Components\CheckboxList::make('data')
                     ->hiddenLabel()
