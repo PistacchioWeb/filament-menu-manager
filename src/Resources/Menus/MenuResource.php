@@ -56,6 +56,10 @@ class MenuResource extends Resource
         return MenuTable::configure($table);
     }
 
+    public static function getRelationManagersContentComponent(){
+
+    }
+
     public static function getPages(): array
     {
         return [

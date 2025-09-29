@@ -4,24 +4,14 @@
     'fi-resource-' . str_replace('/', '-', $this->getResource()::getSlug()),
     'fi-resource-record-' . $record->getKey(),
 ])>
-    @capture($form)
-        {{-- <x-filament-panels::form id="form" :wire:key="$this->getId() . '.forms.' . $this->getFormStatePath()"
-            wire:submit="save">
-            {{ $this->form }}
-             <x-filament-panels::form.actions :actions="$this->getCachedFormActions()" :full-width="$this->hasFullWidthFormActions()" />
-        </x-filament-panels::form> --}}
-    @endcapture
+    {{$this->content}}
 
     @php
         $relationManagers = $this->getRelationManagers();
         $hasCombinedRelationManagerTabsWithContent = $this->hasCombinedRelationManagerTabsWithContent();
     @endphp
 
-    @if (!$hasCombinedRelationManagerTabsWithContent || !count($relationManagers))
-        {{ $form() }}
-    @endif
-
-    @if (count($relationManagers))
+{{--    @if (count($relationManagers))--}}
         {{-- <x-filament-panels::resources.relation-managers :active-locale="isset($activeLocale) ? $activeLocale : null" :active-manager="$this->activeRelationManager ??
             ($hasCombinedRelationManagerTabsWithContent ? null : array_key_first($relationManagers))" :content-tab-label="$this->getContentTabLabel()"
             :content-tab-icon="$this->getContentTabIcon()" :content-tab-position="$this->getContentTabPosition()" :managers="$relationManagers" :owner-record="$record" :page-class="static::class">
@@ -31,7 +21,7 @@
                 </x-slot>
             @endif
         </x-filament-panels::resources.relation-managers> --}}
-    @endif
+{{--    @endif--}}
 
     <div class="grid grid-cols-12 gap-4" wire:ignore>
         <div class="flex flex-col col-span-12 gap-4 sm:col-span-4">
@@ -54,5 +44,4 @@
         </div>
     </div>
 
-    {{-- <x-filament-panels::page.unsaved-data-changes-alert /> --}}
 </x-filament-panels::page>
