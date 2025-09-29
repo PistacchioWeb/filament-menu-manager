@@ -21,11 +21,6 @@ class EditMenu extends EditRecord
         return FilamentMenuManagerPlugin::get()->getResource();
     }
 
-    // public function form(Schema $schema): Schema
-    // {
-    //     return static::getResource()::form($schema);
-    // }
-
     protected function getHeaderActions(): array
     {
         return [
