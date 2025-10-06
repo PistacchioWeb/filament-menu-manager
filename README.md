@@ -1,43 +1,17 @@
 # Filament Menu Manager
 
+
 Fork of [https://github.com/datlechin/filament-menu-builder](https://github.com/datlechin/filament-menu-builder).
 We decided to fork this repository to allow our projects to upgrade to filament V4.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/pistacchioweb/filament-menu-manager.svg?style=flat-square)](https://packagist.org/packages/pistacchioweb/filament-menu-manager)
-[![Total Downloads](https://img.shields.io/packagist/dt/pistacchioweb/filament-menu-manager.svg?style=flat-square)](https://packagist.org/packages/pistacchioweb/filament-menu-manager)
+> [!NOTE]
+> Not production ready, use it at your own risk.
 
 This [Filament](https://filamentphp.com) package allows you to create and manage menus in your Filament application.
 
 ![Filament Menu Manager](https://github.com/pistacchioweb/filament-menu-manager/raw/main/art/menu-manager.jpg)
 
-> [!NOTE]
-> I created this for my personal project, so some features and extensibility are still lacking. Pull requests are welcome.
-
 ## Installation
-
-Add the repository to the package.json file
-
-```json
-{
-  "require": {
-    "vendor/filament-menu-manager": "*",
-    "repositories": [
-      {
-        "type": "vcs",
-        "url": "git@github.com:PistacchioWeb/filament-menu-manager.git"
-      }
-    ]
-  }
-}
-```
-
-Run composer installation
-
-```bash
-
-composer install
-
-```
 
 <!-- You can install the package via composer:
 ```bash
@@ -463,7 +437,6 @@ Please review [our security policy](https://github.com/pistacchioweb/filament-me
 
 - [Ngo Quoc Dat](https://github.com/pistacchioweb)
 - [Log1x](https://github.com/Log1x)
-- [All Contributors](https://github.com/pistacchioweb/filament-menu-manager/contributors)
 
 ## License
 
